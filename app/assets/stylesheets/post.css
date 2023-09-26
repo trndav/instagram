@@ -15,7 +15,7 @@
     left: 0;
     z-index: 4;
     opacity: 0;
-    background-color: black;
+    background-color: rgb(149, 155, 152);
 }
 .post-link:hover {
     opacity: 0.1;

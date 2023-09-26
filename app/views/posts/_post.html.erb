@@ -9,6 +9,11 @@
     <%= post.keywords %>
   </p>
   <p>
+    <% post.images.each do |image| %>
+      <%= image_tag(image, style: "object-fit: contain; width: 500px") %>
+    <% end %>
+  </p>
+  <p>
     <%= link_to "", post, class:"post-link" %>
   </p>
 </div>
