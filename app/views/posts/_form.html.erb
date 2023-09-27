@@ -1,4 +1,4 @@
-<div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto; background-color: #f8f8f8; border-radius: 10px; padding: 5px;">
+<div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto; background-color: #f8f8f8; border-radius: 10px; padding: 5px; margin-top: 20px;">
   <h1>New post</h1>
   <%= form_with(model: post) do |form| %>
 
@@ -40,15 +40,15 @@
       <p style="color: red"><%= post.errors.full_messages_for(:keywords).join(". ") %></p>
     <% end %>
 
-    <div>
+    <div class="Choose_files" style="margin-top: 10px;">
       <%= form.file_field :images, multiple: true %>
     </div>
 
-    <div>
+    <div class="Submit" style="margin-top: 10px;">
       <%= form.submit class:"btn btn-primary" %>
     </div>    
   <% end %>
-  <div>
+  <div class="Back" style="margin-top: 10px;">
     <%= link_to "Back to posts", posts_path %>
   </div>
 
