@@ -2,8 +2,17 @@
 
 <%= render @post %>
 
+<% if user_signed_in? %>
+  <% if current_user.id == @post.user.id %>
+    <div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto;" >
+      <%= link_to "Edit post", edit_post_path(@post), class:"btn btn-warning", style:"margin-bottom: 10px;" %>
+      <%= button_to "Delete post", @post, method: :delete, turbo_data: { turbo_confirm: "Are you sure you want to delete this post?" }, class:"btn btn-danger" %>
+    </div>
+  <% end %>
+<% end %>
 
-<div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto;" >
-  <%= link_to "Edit post", edit_post_path(@post), class:"btn btn-warning", style:"margin-bottom: 10px;" %>
-  <%= button_to "Delete post", @post, method: :delete, turbo_data: { turbo_confirm: "Are you sure you want to delete this post?" }, class:"btn btn-danger" %>
-</div>
+<%= render "comments/form", comment: @comment %>
+<% @post.comments.each do |comment| %>
+  <%= comment.text %>
+  <br>
+<% end %>

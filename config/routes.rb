@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get "posts/myposts"
   devise_for :users
   get 'home/about'
