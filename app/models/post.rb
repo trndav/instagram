@@ -3,4 +3,5 @@ class Post < ApplicationRecord
     validates :description, :keywords, presence: true, length: { minimum: 4, maximum: 400 }
 
     has_many_attached :images
+    belongs_to :user
 end

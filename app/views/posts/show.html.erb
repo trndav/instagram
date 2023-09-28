@@ -2,9 +2,8 @@
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+<div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto;" >
+  <%= link_to "Edit post", edit_post_path(@post), class:"btn btn-warning", style:"margin-bottom: 10px;" %>
+  <%= button_to "Delete post", @post, method: :delete, turbo_data: { turbo_confirm: "Are you sure you want to delete this post?" }, class:"btn btn-danger" %>
 </div>
