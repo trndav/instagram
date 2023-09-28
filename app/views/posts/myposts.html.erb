@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag("post") %>
+
+<div style="margin: auto";>  
+    <p style="color: green"><%= flash[:notice] %></p>
+        <div id="posts" class="text-center">
+            <% @posts.each do |post| %>
+                <% if post.user.id == current_user.id %>
+                    <%= render post %>                
+                <% end %>
+            <% end %>            
+        </div>    
+</div>
