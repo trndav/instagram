@@ -14,8 +14,10 @@
         <p><%= image_tag(image, style: "object-fit: contain; width: 500px") %></p>
       <% end %>
     </p>
-    <p>
-      <%= link_to "", post, class:"post-link" %>
-    </p>
+    <%= link_to "", post, class:"post-link" %>      
+    
+  </div>
+  <div class="text-center">
+    <%= link_to post.user.username, post.user %>
   </div>
 </div>
