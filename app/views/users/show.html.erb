@@ -1,8 +1,13 @@
 <div class="col-6" style="margin: auto;">
     <h2>Your Profile</h2>
+    <% if user_signed_in? %>
+        <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, style:"border-radius: 10px; width: 200px; height: 200px" %>
+        <% end %>     
+    <% end %>  
     <ul class="list-group" style="margin-top: 10px">
     <li class="list-group-item"><strong>Username: </strong><%= @user.username %></li>
     <li class="list-group-item"><strong>Email: </strong><%= @user.email %></li>
     <li class="list-group-item"><strong>Bio: </strong><%= @user.bio %></li>
     </ul>
-</div>
+</div> 

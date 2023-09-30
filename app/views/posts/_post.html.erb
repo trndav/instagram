@@ -1,23 +1,26 @@
 <div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto; background-color: #f8f8f8; border-radius: 10px; padding: 5px; margin-top: 20px;">
   <div id="<%= dom_id post %>" class="post-container">
-    <p>
-      <strong><%= post.title %></strong>
-    </p>
-    <p>
-      <%= post.description %>
-    </p>
-    <p>
-      <%= post.keywords %>
-    </p>
-    <p>
-      <% post.images.each do |image| %>
-        <p><%= image_tag(image, style: "object-fit: contain; width: 500px") %></p>
-      <% end %>
-    </p>
-    <%= link_to "", post, class:"post-link" %>      
-    
-  </div>
-  <div class="text-center">
     <%= link_to post.user.username, post.user %>
+      <p><strong><%= post.title %></strong></p>
+      <p><%= post.description %></p>
+      <p><%= post.keywords %></p>
+      <p>
+        <% post.images.each do |image| %>
+          <p><%= image_tag(image, style: "object-fit: contain; width: 500px") %></p>
+        <% end %>
+      </p>
+      <%= link_to "", post, class:"post-link" %>
   </div>
+ 
+  <div class="text-center">
+    <%= post.likes.count %> likes
+    <% if user_signed_in? %>
+      <% like = current_user.likes.find_by(post: post) %>
+      <% if like.nil? %>      
+        <%= button_to "Like", likes_path, params: { like: { post_id: post.id }}, method: :post %>    
+      <% else %>
+        <%= button_to "Unlike", like_path(like), method: :delete %>      
+      <% end %>
+    <% end %>
+  </div>    
 </div>
