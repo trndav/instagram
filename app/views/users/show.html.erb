@@ -1,9 +1,31 @@
 <div class="col-6" style="margin: auto;">
-    <h2>Your Profile</h2>
+    <h2><%= current_user.username%> profile</h2>
     <% if user_signed_in? %>
+        <strong>Following</strong>
+        <%= pluralize(current_user.following.count, 'user') %>
+        <% current_user.following.each do |following| %>            
+            <%= link_to following.username, following %><%= ", " %>
+        <% end %>
+        <% current_user.followers.each do |follower| %>
+        <strong><p>Followers </strong><%= pluralize(current_user.followers.count, 'user') %><%= " " %><%= link_to follower.username, follower %><%= ", " %></p>
+        <% end %>
+
         <% if @user.avatar.attached? %>
             <%= image_tag @user.avatar, style:"border-radius: 10px; width: 200px; height: 200px" %>
-        <% end %>     
+        <% end %> 
+        <div style="margin-top: 10px;">
+            <% if current_user.following?(@user) %>
+                <%= button_to "Unfollow", unfollow_path(@user)%>
+                <% elsif current_user.sent_follow_request_to?(@user) %>
+                    <%= button_to "Cancel follow request", cancel_path(@user) %>
+                <% else %>
+                    <% if @user.id == current_user.id %>
+                <% else %>
+                    <%= button_to "Follow", follow_path(@user)%>
+                <% end %>
+            <% end %>
+        </div>
+
     <% end %>  
     <ul class="list-group" style="margin-top: 10px">
     <li class="list-group-item"><strong>Username: </strong><%= @user.username %></li>

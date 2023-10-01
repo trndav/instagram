@@ -1,11 +1,11 @@
 <div class="col-xl-4 col-md-6 col-sm-8 col-10" style="margin: auto; background-color: #f8f8f8; border-radius: 10px; padding: 5px; margin-top: 20px;">
+  <%= link_to post.user.username, post.user %>
   <div id="<%= dom_id post %>" class="post-container">
-    <%= link_to post.user.username, post.user %>
       <p><strong><%= post.title %></strong></p>
       <p><%= post.description %></p>
       <p><%= post.keywords %></p>
       <p>
-        <% post.images.each do |image| %>
+        <% post.images.reverse_each do |image| %>
           <p><%= image_tag(image, style: "object-fit: contain; width: 500px") %></p>
         <% end %>
       </p>
