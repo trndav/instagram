@@ -39,7 +39,14 @@
           </div>
         </li>
       <% end %>
-
     </ul>
   </div>
+  
+  <div class="search form" style="margin-right: 20px;">
+    <%= form_with url: profiles_index_path, method: :get do |form| %>
+      <%= form.search_field :query, value: params[:query], placeholder: "Search", class:"search-field" %>
+      <%= form.submit "Search", class:"btn btn-primary" %>
+    <% end %>
+  </div>
+
 </nav>

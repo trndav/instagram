@@ -1,0 +1,22 @@
+<% # if query is empty %>
+<% if params[:query].present? %>
+    <div class="text-center" style="margin-top: 20px; margin-bottom: 20px;">        
+        <% if @users.any? %>        
+            <h4><strong>Found users</h4></strong>        
+            <% @users.each do |user| %> 
+                <%= link_to user.username, user_path(user.id) %><br>
+                <%= user.email %><br>
+                <%= user.bio %><br>
+                <br> 
+            <% end %>       
+        <% # If no users found then this %>
+        <% else %>
+            <h4><strong>No users found.</h4></strong>        
+        <% end %>
+    </div>
+<% # If query is empty then this %>
+<% else %>
+    <div class="text-center" style="margin-top: 20px; margin-bottom: 20px;">
+        <h4><strong>Please enter a search query.</strong></h4>
+    </div>
+<% end %>
