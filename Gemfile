@@ -6,7 +6,11 @@ ruby "3.2.2"
 # My custom gems
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
+# Search functionality
 gem "ransack"
+# Pagination
+gem "pagy"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"

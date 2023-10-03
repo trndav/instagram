@@ -1,10 +1,13 @@
 <%= stylesheet_link_tag("post") %>
 
-<div style="margin: auto";>
-  <p style="color: green"><%= notice %></p>
-  <div id="posts">
-    <% @posts.each do |post| %>
-      <%= render post %>
-    <% end %>
-  </div>
-</div>
+<% # Code auto loads new posts when on end %>
+<%= turbo_frame_tag :results, data: { turbo_action: 'advance' } do %>
+  <div id="posts"></div>
+  <%= turbo_frame_tag :pagination, loading: :lazy,
+                      src: posts_path(format: :turbo_stream) %>
+<% end %>
+
+<%# <div class="col-2" style="margin: auto; margin-top: 20px;"> %>
+  <!-- Pagination code (actually not needed because of the up code that auto-loads new posts) -->
+  <%# = raw pagy_bootstrap_nav(@pagy) %>
+  <%# </div> %>
