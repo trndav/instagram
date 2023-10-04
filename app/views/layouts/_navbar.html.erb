@@ -25,7 +25,12 @@
       <% if user_signed_in? %>
         <% if current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, style:"width: 40px; height: 40px; border-radius: 10px" %>
-        <% end %>        
+        <% end %>   
+        <% if current_user.admin? %>
+          <a class="nav-link" style="color: red">Admin</a>
+          <%= link_to "Analytics", active_analytics_path, class:"nav-link", style:"color: red" %>
+        <% end %>
+   
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
             Account

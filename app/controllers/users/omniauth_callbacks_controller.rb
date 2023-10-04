@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_after_action :record_page_view
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

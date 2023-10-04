@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # Only admin users can see analytics page
+  authenticate :user, -> (u) { u.admin? } do
+    mount ActiveAnalytics::Engine, at: "analytics"
+  end
+
   get 'profiles/index'
   resources :likes, only: [:create, :destroy]
 

@@ -1,15 +1,18 @@
 <div class="col-6" style="margin: auto;">
     <h2><%= current_user.username%> profile</h2>
     <% if user_signed_in? %>
-        <strong>Following</strong>
+        <p><strong>Following:</strong>
         <%= pluralize(current_user.following.count, 'user') %>
         <% current_user.following.each do |following| %>            
             <%= link_to following.username, following %><%= ", " %>
         <% end %>
+        <br>
+        <strong>Followers:</strong>
+        <%= pluralize(current_user.followers.count, 'user') %>
         <% current_user.followers.each do |follower| %>
-        <strong><p>Followers </strong><%= pluralize(current_user.followers.count, 'user') %><%= " " %><%= link_to follower.username, follower %><%= ", " %></p>
+            <%= link_to follower.username, follower %><%= ", " %>
         <% end %>
-
+            </p>
         <% if @user.avatar.attached? %>
             <%= image_tag @user.avatar, style:"border-radius: 10px; width: 200px; height: 200px" %>
         <% end %> 

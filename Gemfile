@@ -10,7 +10,7 @@ gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
 gem "ransack"
 # Pagination
 gem "pagy"
-
+gem "active_analytics"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
