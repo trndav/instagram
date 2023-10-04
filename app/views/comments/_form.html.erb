@@ -1,3 +1,4 @@
+<div style="margin: auto; background-color: #f8f8f8; border-radius: 10px; padding: 5px; margin-top: 20px;">
 <%= form_with(model: @comment) do |form| %>
   <% if @comment.errors.any? %>
     <div style="color: red">
@@ -12,8 +13,8 @@
   <% end %>
 
   <div>
-    <%= form.label :text, style: "display: block" %>
-    <%= form.text_field :text %>
+    <%= form.label :add_a_comment, class: "full-width-input", style: "display: block" %>
+    <%= form.text_field :text, class: "full-width-input" %>
   </div>
 
   <div>
@@ -24,7 +25,8 @@
     <%= form.text_field :post_id, type:"hidden" %>
   </div>
 
-  <div>
+  <div style="margin-top: 10px;">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

@@ -5,7 +5,11 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 15px;">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">      
+    
+      <li class="nav-item active">
+        <%= link_to "Feed", feed_path, class:"nav-link" %>
+      </li>
       <li class="nav-item active">
         <%= link_to "New Post", new_post_path, class:"nav-link" %>
       </li>
@@ -22,7 +26,7 @@
         </li>
       <% end %>
 
-      <% if user_signed_in? %>
+      <% if user_signed_in? %>         
         <% if current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, style:"width: 40px; height: 40px; border-radius: 10px" %>
         <% end %>   
@@ -30,6 +34,7 @@
           <a class="nav-link" style="color: red">Admin</a>
           <%= link_to "Analytics", active_analytics_path, class:"nav-link", style:"color: red" %>
         <% end %>
+        <%= link_to current_user.username, current_user, class:"nav-link" %>
    
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">

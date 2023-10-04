@@ -5,9 +5,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.order(:created => :asc)
+    @posts = Post.order(:created_at => :desc)
     # Limit number of posts show items: X
-    @pagy, @posts = pagy_countless(@posts, items: 2)
+    @pagy, @posts = pagy_countless(@posts, items: 1)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -56,13 +56,18 @@ class PostsController < ApplicationController
   end
 
   # DELETE /posts/1 or /posts/1.json
-  def destroy
-    @post.destroy
-
+def destroy
+  @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to root_path, notice: "Post was successfully destroyed." }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@post) }
     end
+
+
+   # respond_to do |format|
+    #  format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+   #   format.json { head :no_content }
+   # end
   end
 
   private

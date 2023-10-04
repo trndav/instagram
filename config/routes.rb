@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/feed', to: 'home#feed', as: 'feed'
 
   # Only admin users can see analytics page
   authenticate :user, -> (u) { u.admin? } do
     mount ActiveAnalytics::Engine, at: "analytics"
-  end
+  end  
 
   get 'profiles/index'
   resources :likes, only: [:create, :destroy]
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :comments
   get "posts/myposts"
   get 'home/about'
+
   resources :posts
   root "posts#index"  
 
