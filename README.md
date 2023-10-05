@@ -4,7 +4,6 @@
     On this page we have:
     - Scaffold posts: title, description, keywords
     - Bootstrap navbar, hamburger menu and footer
-    <br>
     - Post validations title/description/keyword length and required
     <br>
     - Posts styling
