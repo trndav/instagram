@@ -2,9 +2,7 @@
 
     <p>Following Youtube course I made "Instagram" clone page https://www.youtube.com/watch?v=DhxLOC-9kW0</p>
     On this page we have:
-    <br>
     - Scaffold posts: title, description, keywords
-    <br>
     - Bootstrap navbar, hamburger menu and footer
     <br>
     - Post validations title/description/keyword length and required
